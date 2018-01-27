@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - safeZone
+  - Survivor
   layers:
   - Default
   - TransparentFX
