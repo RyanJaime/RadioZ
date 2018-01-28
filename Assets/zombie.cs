@@ -6,7 +6,7 @@ public class zombie : MonoBehaviour {
 
 	// Use this for initialization
 	public int clumpValue = 3;
-	public float sense = 5.0f;
+	public float sense = 1.0f;
 	//public GameObject allSurvivors;
 	CircleCollider2D senseCircle;
 
