@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class zombieHitbox : MonoBehaviour {
 	BoxCollider2D hitbox;
+	public Sprite z;
 
 	// Use this for initialization
 	void Start () {
 		//gameObject.AddComponent<BoxCollider2D> ();
 		//gameObject.AddComponent<Rigidbody2D> ();
 		//gameObject.GetComponent<Rigidbody2D> ().gravityScale = 0;
+
 
 		hitbox = gameObject.GetComponent<BoxCollider2D> ();
 		//hitbox.size = new Vector2 (1.0f,1.0f);
@@ -43,6 +45,9 @@ public class zombieHitbox : MonoBehaviour {
 
 		GameObject newZomHitbox = new GameObject ();
 		newZomHitbox.AddComponent<zombieHitbox> ();
+		newZomHitbox.AddComponent<SpriteRenderer>();
+		newZomHitbox.GetComponent<SpriteRenderer> ().sprite = z;
+		newZomHitbox.GetComponent<zombieHitbox> ().z = z;
 		newZomHitbox.AddComponent<BoxCollider2D> ();
 		newZomHitbox.transform.position = newZom.transform.position;
 		newZomHitbox.transform.parent = newZom.transform;
