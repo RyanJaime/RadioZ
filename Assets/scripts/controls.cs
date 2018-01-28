@@ -12,37 +12,48 @@ public class controls : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
         {
 			if (Input.GetKeyDown (KeyCode.W)) {
-				yDood += 0.01f;
+				xDood = 0.0f;
+				yDood = 0.0f;
+				yDood += 0.1f;
 			}
-			if (Input.GetKeyDown (KeyCode.A)) {
-				xDood -= 0.01f;
+			else if (Input.GetKeyDown (KeyCode.A)) {
+				xDood = 0.0f;
+				yDood = 0.0f;
+				xDood -= 0.1f;
 			}
-			if (Input.GetKeyDown (KeyCode.S)) {
-				yDood -= 0.01f;
+			else if (Input.GetKeyDown (KeyCode.S)) {
+				xDood = 0.0f;
+				yDood = 0.0f;
+				yDood -= 0.1f;
 			}
-			if (Input.GetKeyDown (KeyCode.D)) {
-				xDood += 0.01f;
+			else if (Input.GetKeyDown (KeyCode.D)) {
+				xDood = 0.0f;
+				yDood = 0.0f;
+				xDood += 0.1f;
+			}
+			else if (Input.GetKeyDown (KeyCode.Space)) {
+				xDood = 0.0f;
+				yDood = 0.0f;
 			}
 
             /*var x = Input.GetAxis("Horizontal") * Time.deltaTime * 5.0f;
             var z = Input.GetAxis("Vertical") * Time.deltaTime * 5.0f;*/
 
-			if (xDood >= 0.01) {
-				xDood = 0.01f;
+			if (xDood >= 0.1) {
+				xDood = 0.1f;
 			}
-			if (xDood <= -0.01) {
-				xDood = -0.01f;
+			if (xDood <= -0.1) {
+				xDood = -0.1f;
 			}
-			if (yDood >= 0.01) {
-				yDood = 0.01f;
+			if (yDood >= 0.1) {
+				yDood = 0.1f;
 			}
-			if (yDood <= -0.01) {
-				yDood = -0.01f;
+			if (yDood <= -0.1) {
+				yDood = -0.1f;
 			}
-			//print (xDood);
 
             transform.Translate(xDood, yDood, 0);
         }
