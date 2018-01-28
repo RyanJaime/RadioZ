@@ -16,7 +16,7 @@ public class playerCollisions : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        print("colliding");
+        //print("colliding");
         //if (coll.gameObject.tag == "Enemy")
         //    coll.gameObject.SendMessage("ApplyDamage", 10);
 

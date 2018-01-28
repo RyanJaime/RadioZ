@@ -7,12 +7,12 @@ public class zombieHitbox : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gameObject.AddComponent<BoxCollider2D> ();
-		gameObject.AddComponent<Rigidbody2D> ();
-		gameObject.GetComponent<Rigidbody2D> ().gravityScale = 0;
+		//gameObject.AddComponent<BoxCollider2D> ();
+		//gameObject.AddComponent<Rigidbody2D> ();
+		//gameObject.GetComponent<Rigidbody2D> ().gravityScale = 0;
 
 		hitbox = gameObject.GetComponent<BoxCollider2D> ();
-		hitbox.size = new Vector2 (3.0f,3.0f);
+		//hitbox.size = new Vector2 (1.0f,1.0f);
 
 
 	}
@@ -22,9 +22,11 @@ public class zombieHitbox : MonoBehaviour {
 		
 	}
 
-	void OnCollisionEnter2D (Collision2D coll){
-		if (coll.gameObject.tag == "Survivor Hitbox"){
+	void OnCollisionStay2D (Collision2D coll){
+		//Debug.Log (coll.gameObject.name);
+		if (coll.gameObject.tag == "Survivor"){
 			convert (coll);
+			Debug.Log ("convert");
 		}
 
 	}
@@ -36,9 +38,14 @@ public class zombieHitbox : MonoBehaviour {
 		//insert creation of new zombie here
 		GameObject newZom = new GameObject();
 		newZom.AddComponent<zombie> ();
-		GameObject newZomHitbox = new GameObject ();
-		newZomHitbox.transform.parent = newZom.transform;
+
 		newZom.transform.position = survivorPos;
+
+		GameObject newZomHitbox = new GameObject ();
+		newZomHitbox.AddComponent<zombieHitbox> ();
+		newZomHitbox.AddComponent<BoxCollider2D> ();
+		newZomHitbox.transform.position = newZom.transform.position;
+		newZomHitbox.transform.parent = newZom.transform;
 
 	}
 }
