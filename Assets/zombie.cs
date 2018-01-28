@@ -52,22 +52,25 @@ public class zombie : MonoBehaviour {
 
 		}
 		*/
-		if (!chasing){
+		if (chasing && currentChaseVictim != null) {
+			chase (currentChaseVictim.transform.position);
+		} else {
 			wander ();
 		}
 		
 	}
 
 	void OnTriggerStay2D(Collider2D coll){
-		Debug.Log ("touching");
+		//Debug.Log ("touching");
 		if (coll.gameObject.tag == "Survivor") {
 
 			if (!chasing){
-				chasing = true;
+				//chasing = true;
 				currentChaseVictim = coll.gameObject;
 			}
 			if (currentChaseVictim == coll.gameObject) {
-				chase (coll.gameObject.transform.position);
+				//chase (coll.gameObject.transform.position);
+				chasing = true;
 			} 
 		}
 
@@ -76,7 +79,7 @@ public class zombie : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D coll){
 		if (coll.gameObject == currentChaseVictim) {
 			chasing = false;
-			Debug.Log ("escaped");
+			//Debug.Log (coll.gameObject.transform.position + ": " + transform.position);
 		}
 
 	}
@@ -109,8 +112,13 @@ public class zombie : MonoBehaviour {
 	}
 
 	void chase(Vector3 pos){
-		//chasing = true;
-		Debug.Log("Chasing");
+		chasing = false;
+
+		Debug.Log (pos);
 		//transform.Translate (pos * Time.deltaTime);
+		transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), new Vector2(pos.x,pos.y), 3 * Time.deltaTime);
+		Debug.Log (transform.position);
+
+
 	}
 }

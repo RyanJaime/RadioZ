@@ -348,6 +348,10 @@ Prefab:
       propertyPath: m_TagString
       value: Survivor
       objectReference: {fileID: 0}
+    - target: {fileID: 1960299988247124, guid: c6c63260c4f837b4899ea2eb4b492c87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6c63260c4f837b4899ea2eb4b492c87, type: 2}
   m_IsPrefabParent: 0
@@ -691,6 +695,10 @@ Prefab:
     - target: {fileID: 1960299988247124, guid: c6c63260c4f837b4899ea2eb4b492c87, type: 2}
       propertyPath: m_TagString
       value: Survivor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960299988247124, guid: c6c63260c4f837b4899ea2eb4b492c87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 58749294356225794, guid: c6c63260c4f837b4899ea2eb4b492c87, type: 2}
