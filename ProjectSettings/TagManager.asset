@@ -9,6 +9,8 @@ TagManager:
   - Survivor Hitbox
   - Zombie Handler
   - Survivor Handler
+  - bubbletag
+  - text
   layers:
   - Default
   - TransparentFX

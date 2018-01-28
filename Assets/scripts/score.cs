@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class score : MonoBehaviour {
     public static int scoreVal = 0;
 	public static int survivorCount = 50;
-    public Text scoreText;
+    public TextMeshProUGUI scoreText;
+     
     
 	// Use this for initialization
 	void Start () {
-        scoreText = GetComponent<Text>();
+        scoreText = GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update () {
-		scoreText.text = "Survivors: " + survivorCount;
+		scoreText.text = "Survivors:\n" + survivorCount + "\nScore:\n" + scoreVal;
 
 		if (survivorCount <= 0) {
-			if (scoreVal >= 35) {
+			if (scoreVal >= 25) {
                 scoreVal = 0;
                 survivorCount = 50;
 				win ();
