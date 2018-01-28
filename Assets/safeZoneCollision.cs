@@ -20,10 +20,11 @@ public class safeZoneCollision : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        print("coLLLLLLliding");
+        //print("coLLLLLLliding");
         //if (coll.gameObject.tag == "Enemy")
         //    coll.gameObject.SendMessage("ApplyDamage", 10);
 
+		/*
         if (coll.gameObject.tag == "Survivor" && currentCapacity < maxCapacity)
         {
             currentCapacity += 1;
@@ -31,7 +32,13 @@ public class safeZoneCollision : MonoBehaviour {
             score.scoreVal -= 1;
             
             Destroy(coll.gameObject);
-        }
+        }*/
+
+		if (coll.gameObject.tag == "Survivor" && coll.gameObject.GetComponent<controls>().groupSize <= maxCapacity){
+			score.scoreVal += coll.gameObject.GetComponent<controls>().groupSize;
+			score.survivorCount -= coll.gameObject.GetComponent<controls>().groupSize;
+			Destroy(coll.gameObject);
+		}
 
     }
 }

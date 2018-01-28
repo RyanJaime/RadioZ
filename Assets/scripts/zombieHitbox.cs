@@ -9,7 +9,7 @@ public class zombieHitbox : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		//gameObject.AddComponent<BoxCollider2D> ();
 		//gameObject.AddComponent<Rigidbody2D> ();
 		//gameObject.GetComponent<Rigidbody2D> ().gravityScale = 0;
@@ -50,7 +50,8 @@ public class zombieHitbox : MonoBehaviour {
 	void convert(Collision2D C){
 		gameObject.GetComponentInParent<zombie> ().chasing = false;
 		var survivorPos = C.gameObject.transform.position;
-		var survivorNum = C.gameObject.GetComponentInChildren<controls> ().groupSize;
+		var survivorNum = C.gameObject.GetComponent<controls> ().groupSize;
+		score.survivorCount -= survivorNum;
 		Destroy (C.gameObject);
 		//insert creation of new zombie here
 		GameObject newZom = new GameObject();
@@ -63,12 +64,16 @@ public class zombieHitbox : MonoBehaviour {
 		newZomHitbox.AddComponent<SpriteRenderer>();
 		if (survivorNum == 3) {
 			newZomHitbox.GetComponent<SpriteRenderer> ().sprite = ZombieSprites.GetComponent<Zsprites> ().z3;
+			newZom.GetComponent<zombie> ().clumpValue = 3;
 
 		} else if (survivorNum == 7) {
 			newZomHitbox.GetComponent<SpriteRenderer> ().sprite = ZombieSprites.GetComponent<Zsprites> ().z7;
+			newZom.GetComponent<zombie> ().clumpValue = 7;
 
 		} else {
 			newZomHitbox.GetComponent<SpriteRenderer> ().sprite = ZombieSprites.GetComponent<Zsprites> ().z10;
+			newZom.GetComponent<zombie> ().clumpValue = 10;
+
 		}
 		//newZomHitbox.GetComponent<SpriteRenderer> ().sprite = z;
 		//newZomHitbox.GetComponent<zombieHitbox> ().z = z;
