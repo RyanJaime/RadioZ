@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class score : MonoBehaviour {
     public static int scoreVal = 0;
@@ -28,10 +29,10 @@ public class score : MonoBehaviour {
 	}
 
 	void win(){
-
+		SceneManager.LoadScene ("win");
 	}
 
 	void lose(){
-
+		Application.LoadLevel ("lose");
 	}
 }
