@@ -5,6 +5,8 @@ using UnityEngine;
 public class zombieHitbox : MonoBehaviour {
 	BoxCollider2D hitbox;
 	public Sprite z;
+	GameObject ZombieSprites;
+
 
 	// Use this for initialization
 	void Start () {
@@ -14,6 +16,18 @@ public class zombieHitbox : MonoBehaviour {
 
 
 		hitbox = gameObject.GetComponent<BoxCollider2D> ();
+
+
+		ZombieSprites = GameObject.FindGameObjectWithTag("Zombie Handler");
+		if (gameObject.GetComponentInParent<zombie> ().clumpValue == 3) {
+			gameObject.GetComponent<SpriteRenderer> ().sprite = ZombieSprites.GetComponent<Zsprites> ().z3;
+		} else if (gameObject.GetComponentInParent<zombie> ().clumpValue == 7) {
+			gameObject.GetComponent<SpriteRenderer> ().sprite = ZombieSprites.GetComponent<Zsprites> ().z7;
+
+		} else {
+			gameObject.GetComponent<SpriteRenderer> ().sprite = ZombieSprites.GetComponent<Zsprites> ().z10;
+
+		}
 		//hitbox.size = new Vector2 (1.0f,1.0f);
 
 
@@ -36,6 +50,7 @@ public class zombieHitbox : MonoBehaviour {
 	void convert(Collision2D C){
 		gameObject.GetComponentInParent<zombie> ().chasing = false;
 		var survivorPos = C.gameObject.transform.position;
+		var survivorNum = C.gameObject.GetComponentInChildren<controls> ().groupSize;
 		Destroy (C.gameObject);
 		//insert creation of new zombie here
 		GameObject newZom = new GameObject();
@@ -46,8 +61,17 @@ public class zombieHitbox : MonoBehaviour {
 		GameObject newZomHitbox = new GameObject ();
 		newZomHitbox.AddComponent<zombieHitbox> ();
 		newZomHitbox.AddComponent<SpriteRenderer>();
-		newZomHitbox.GetComponent<SpriteRenderer> ().sprite = z;
-		newZomHitbox.GetComponent<zombieHitbox> ().z = z;
+		if (survivorNum == 3) {
+			newZomHitbox.GetComponent<SpriteRenderer> ().sprite = ZombieSprites.GetComponent<Zsprites> ().z3;
+
+		} else if (survivorNum == 7) {
+			newZomHitbox.GetComponent<SpriteRenderer> ().sprite = ZombieSprites.GetComponent<Zsprites> ().z7;
+
+		} else {
+			newZomHitbox.GetComponent<SpriteRenderer> ().sprite = ZombieSprites.GetComponent<Zsprites> ().z10;
+		}
+		//newZomHitbox.GetComponent<SpriteRenderer> ().sprite = z;
+		//newZomHitbox.GetComponent<zombieHitbox> ().z = z;
 		newZomHitbox.AddComponent<BoxCollider2D> ();
 		newZomHitbox.transform.position = newZom.transform.position;
 		newZomHitbox.transform.parent = newZom.transform;

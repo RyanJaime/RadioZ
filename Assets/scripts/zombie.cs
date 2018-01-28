@@ -6,7 +6,7 @@ public class zombie : MonoBehaviour {
 
 	// Use this for initialization
 	public int clumpValue = 3;
-	public float sense = 1.0f;
+	public float sense = 3.0f;
 	//public GameObject allSurvivors;
 	CircleCollider2D senseCircle;
 	public float speed = 0.3f;
@@ -36,6 +36,8 @@ public class zombie : MonoBehaviour {
 		senseCircle = gameObject.GetComponent<CircleCollider2D> ();
 		senseCircle.radius = sense;
 		senseCircle.isTrigger = true;
+
+
 
 		//random range of movement
 		randomX = Random.Range(-1,1);
@@ -90,6 +92,7 @@ public class zombie : MonoBehaviour {
 		
 
 	void wander(){
+		chasing = false;
 		if (elapsedTime < duration && move) {
 			transform.Translate (new Vector3(randomX,randomY, 0.0f) * speed * Time.deltaTime );
 			elapsedTime += Time.deltaTime;
