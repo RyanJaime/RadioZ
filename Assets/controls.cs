@@ -42,7 +42,7 @@ public class controls : MonoBehaviour {
 			if (yDood <= -0.01) {
 				yDood = -0.01f;
 			}
-			print (xDood);
+			//print (xDood);
 
             transform.Translate(xDood, yDood, 0);
         }

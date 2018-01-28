@@ -53,6 +53,7 @@ public class zombie : MonoBehaviour {
 		}
 		*/
 		if (chasing && currentChaseVictim != null) {
+			Debug.Log ("chasing: "+ currentChaseVictim);
 			chase (currentChaseVictim.transform.position);
 		} else {
 			wander ();
@@ -114,10 +115,10 @@ public class zombie : MonoBehaviour {
 	void chase(Vector3 pos){
 		chasing = false;
 
-		Debug.Log (pos);
+		//Debug.Log (pos);
 		//transform.Translate (pos * Time.deltaTime);
 		transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), new Vector2(pos.x,pos.y), 3 * Time.deltaTime);
-		Debug.Log (transform.position);
+		//Debug.Log (transform.position);
 
 
 	}
