@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class score : MonoBehaviour {
     public static int scoreVal = 0;
@@ -19,19 +20,23 @@ public class score : MonoBehaviour {
 
 		if (survivorCount <= 0) {
 			if (scoreVal >= 35) {
+                scoreVal = 0;
+                survivorCount = 50;
 				win ();
 			} else {
-				lose ();
+                scoreVal = 0;
+                survivorCount = 50;
+                lose ();
 			}
 		}
 	
 	}
 
 	void win(){
-
+		SceneManager.LoadScene ("win");
 	}
 
 	void lose(){
-
+		Application.LoadLevel ("lose");
 	}
 }
