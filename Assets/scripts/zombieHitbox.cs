@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class zombieHitbox : MonoBehaviour {
 	BoxCollider2D hitbox;
-	public Sprite z;
+	//public Sprite z;
 	GameObject ZombieSprites;
 
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 		//gameObject.AddComponent<BoxCollider2D> ();
 		//gameObject.AddComponent<Rigidbody2D> ();
 		//gameObject.GetComponent<Rigidbody2D> ().gravityScale = 0;

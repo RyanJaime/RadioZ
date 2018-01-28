@@ -33,7 +33,8 @@ public class zombie : MonoBehaviour {
 		gameObject.AddComponent<CircleCollider2D> ();
 		gameObject.AddComponent<Rigidbody2D> ();
 		gameObject.GetComponent<Rigidbody2D> ().gravityScale = 0;
-		senseCircle = gameObject.GetComponent<CircleCollider2D> ();
+        gameObject.GetComponent<Rigidbody2D>().freezeRotation = true;
+        senseCircle = gameObject.GetComponent<CircleCollider2D> ();
 		senseCircle.radius = sense;
 		senseCircle.isTrigger = true;
 
